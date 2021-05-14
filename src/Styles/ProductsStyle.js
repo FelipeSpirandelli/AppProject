@@ -3,15 +3,21 @@ import {  StyleSheet  } from 'react-native'
 
 const style = StyleSheet.create({
     textContainer:{
-        backgroundColor: '#000',
+        backgroundColor: '#00BFFF',
         flexDirection: 'column',
         justifyContent: 'space-around',
         alignItems: 'center',
-        padding: 30,
-        width: '50%'
+        paddingLeft: 30,
+        paddingRight: 30,
+        paddingTop: 5,
+        paddingBottom: 30,
+        margin: '2%',
+        width: '46%',
+        borderColor:'#000',
+        borderWidth: 1,
     },
     productsContainer:{
-        backgroundColor: '#346782',
+        backgroundColor: '#FFF',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
@@ -22,16 +28,16 @@ const style = StyleSheet.create({
         flexDirection: 'column'
     },
     primaryText: {
-        margin: 10,
+        marginBottom: 4,
         fontSize: 20,
-        color: '#FFF',
+        color: '#000',
     },
     pruductField:{
         flex:1
     },
     image:{
-        width: 50,
-        height: 50,
+        width: 90,
+        height: 90,
     }
 })
 
