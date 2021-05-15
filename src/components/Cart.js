@@ -3,8 +3,8 @@ import { Text, View, Button, Image } from 'react-native'
 
 import Style from '../Styles/ProductsStyle.js'
 
-const Product = ({ id, name, base_experience, front_shiny, isAdded,
-    toggleProduct, addRemoveProduct}) => {
+const Cart = ({ id, name, base_experience, front_shiny, isAdded,
+    addRemoveProduct, toggleProduct}) => {
 
     return (
         <View style = {Style.textContainer}>
@@ -32,4 +32,4 @@ const Product = ({ id, name, base_experience, front_shiny, isAdded,
         )
 }
 
-export default Product
+export default Cart
