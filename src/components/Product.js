@@ -1,33 +1,37 @@
 import React from 'react'
-import { Text, View, Button, Image } from 'react-native'
+import { Text, View, TouchableOpacity, Image } from 'react-native'
 
-import Style from '../Styles/ProductsStyle.js'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+
+import productsStyle from '../Styles/ProductsStyle'
+import textStyle from '../Styles/TextStyle.js'
+import imageStyle from '../Styles/ImageStyle.js'
 
 const Product = ({ id, name, base_experience, front_shiny, isAdded,
     toggleProduct, addRemoveProduct}) => {
 
     return (
-        <View style = {Style.textContainer}>
+        <View style = {productsStyle.textContainer}>
             <Image 
-            style = {Style.image}
+            style = {imageStyle.mediumImage}
             source= {{uri: front_shiny}}/>
-            <Text style = {Style.primaryText}>{ name }</Text>
-            <Text style = {Style.primaryText}>R${ base_experience }</Text>
-            <Button
-                title={ isAdded ?
-                    "Retirar" :
-                    "Adicionar"
+            <Text style = {textStyle.primaryText}>{ name }</Text>
+            <Text style = {textStyle.primaryText}>R${ base_experience }</Text>
+            <TouchableOpacity onPress={() => {
+                toggleProduct(id)
+                addRemoveProduct(id, name, base_experience, front_shiny, isAdded)
+            }}>
+                { isAdded ?
+                    (<View style = {productsStyle.buttonRemove} >
+                    <Ionicons name="close-circle-outline" size={30} />
+                    <Text style={textStyle.primaryText}> Remove </Text>
+                    </View>) :
+                    (<View style = {productsStyle.buttonAdd} >
+                    <Ionicons name="checkmark-circle-outline" size={30} />
+                    <Text style={textStyle.primaryText}> Add </Text>
+                    </View>) 
                 }
-                onPress = { () => {
-                    toggleProduct(id)
-                    addRemoveProduct(id, name, base_experience, front_shiny, isAdded)
-                }}
-                color = { isAdded ? 
-                    "#E74C3C" 
-                    : "#28B463"
-                    }
-                
-            />
+            </TouchableOpacity>
         </View>
         )
 }

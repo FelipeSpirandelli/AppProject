@@ -2,13 +2,12 @@ import React from 'react'
 import { View, Text, Button, TouchableOpacity } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
-import Style from '../Styles/Navbar'
+import navbarStyle from '../Styles/Navbar'
 
-const ChangeStack = props => {
-
+const ChangeStack = (props) => { 
     return (
         <View >
-            <View style={Style.navbar}>
+            <View style={navbarStyle.navbar}>
                 {
                     props.back
                         ? (
@@ -29,10 +28,15 @@ const ChangeStack = props => {
                                 props.navigation.navigate(props.avance)
                             )
                             }>
+                            {
+                                !!props.cartProducts.length ?
                                 <Ionicons 
-                                    name="cart-outline" 
-                                    color = {props.color}
+                                    name="cart" 
                                     size={30} />
+                                : <Ionicons 
+                                    name="cart-outline" 
+                                    size={30} />
+                            }
                             </TouchableOpacity>
                         )
                         : false

@@ -1,8 +1,7 @@
-import React from 'react'
-import {  StyleSheet  } from 'react-native'
+import { StyleSheet } from 'react-native'
 
-const style = StyleSheet.create({
-    textContainer:{
+const productStyle = StyleSheet.create({
+    textContainer: {
         backgroundColor: '#00BFFF',
         flexDirection: 'column',
         justifyContent: 'space-around',
@@ -13,32 +12,42 @@ const style = StyleSheet.create({
         paddingBottom: 30,
         margin: '2%',
         width: '46%',
-        borderColor:'#000',
+        borderColor: '#000',
         borderWidth: 1,
     },
-    productsContainer:{
+    productsContainer: {
         backgroundColor: '#FFF',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         flexWrap: 'wrap',
-        flexGrow:20
+        flexGrow: 20
     },
-    flatlist: {
-        flexDirection: 'column'
+    buttonAdd: {
+        backgroundColor: "#28B463",
+        borderWidth: 1,
+        borderColor: "#000",
+        borderRadius: 30,
+        paddingLeft: 10,
+        paddingTop: 3,
+        paddingBottom: 3,
+        paddingRight: 10,
+        flexDirection: 'row',
     },
-    primaryText: {
-        marginBottom: 4,
-        fontSize: 20,
-        color: '#000',
+    buttonRemove:{
+        backgroundColor: "#E74C3C",
+        borderWidth: 1,
+        borderColor: "#000",
+        borderRadius: 30,
+        paddingLeft: 10,
+        paddingTop: 3,
+        paddingBottom: 3,
+        paddingRight: 10,
+        flexDirection: 'row',
     },
-    pruductField:{
-        flex:1
+    pruductField: {
+        flex: 1
     },
-    image:{
-        width: 90,
-        height: 90,
-    }
 })
 
-export default style
+export default productStyle

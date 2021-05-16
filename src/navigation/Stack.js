@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { createStackNavigator } from '@react-navigation/stack'
+import { createStackNavigator} from '@react-navigation/stack'
+import { SafeAreaView } from 'react-native'
 
 import axios from 'axios'
 
@@ -44,61 +45,65 @@ export default props => {
         setProducts(copyProducts)
     }
 
-    const addRemoveProduct = (id, name, base_experience, front_shiny, isAdded) =>{
+    const addRemoveProduct = (id, name, base_experience, front_shiny, isAdded) => {
         let copyCartProducts = [...cartProducts]
-        
-        if(isAdded){
-            copyCartProducts = copyCartProducts.filter( copyCartProduct =>{
-                return copyCartProduct.id != id 
+
+        if (isAdded) {
+            copyCartProducts = copyCartProducts.filter(copyCartProduct => {
+                return copyCartProduct.id != id
             })
 
         } else {
-            isAdded = !isAdded 
-            copyCartProducts.push({id, name, base_experience, front_shiny, isAdded})
+            isAdded = !isAdded
+            copyCartProducts.push({ id, name, base_experience, front_shiny, isAdded })
         }
 
         setCartProducts(copyCartProducts)
-        console.log(copyCartProducts)
     }
 
     return (
-        <Stack.Navigator
-            initialRouteName="ProductsList"
-            screenOptions={{ headerShown: false }}
-        >
-            <Stack.Screen
-                name="ProductsList"
+        <SafeAreaView style ={{flexGrow:1}}>
+            <Stack.Navigator
+                initialRouteName="ProductsList"
+                screenOptions={{ headerShown: false }}
             >
-                {
-                    props => (
-                        <ChangeStack {...props} avance="Cart">
-                            <ProductsList 
-                            isLoading={isLoading}
-                            products={products}
-                            toggleProduct={toggleProduct}
-                            addRemoveProduct = {addRemoveProduct}  />
-                        </ChangeStack>
-                    )
-                }
-            </Stack.Screen>
-            <Stack.Screen
-                name="Cart"
-            >
-                {
-                    props => (
-                        <ChangeStack {...props} 
-                            avance="Cart"
-                            back="ProductsList">
-                            <CartList
-                            toggleProduct={toggleProduct}  
-                            cartProducts = {cartProducts}
-                            addRemoveProduct={addRemoveProduct} />
-                        </ChangeStack>
-                    )
-                }
-            </Stack.Screen>
+                <Stack.Screen
+                    name="ProductsList"
+                >
+                    {
+                        props => (
+                            <ChangeStack {...props}
+                                avance="Cart"
+                                cartProducts={cartProducts}>
+                                <ProductsList
+                                    isLoading={isLoading}
+                                    products={products}
+                                    toggleProduct={toggleProduct}
+                                    addRemoveProduct={addRemoveProduct} />
+                            </ChangeStack>
+                        )
+                    }
+                </Stack.Screen>
+                <Stack.Screen
+                    name="Cart"
+                >
+                    {
+                        props => (
+                            <ChangeStack {...props}
+                                avance="Cart"
+                                back="ProductsList"
+                                cartProducts={cartProducts}>
+                                <CartList
+                                    toggleProduct={toggleProduct}
+                                    cartProducts={cartProducts}
+                                    addRemoveProduct={addRemoveProduct} />
+                            </ChangeStack>
+                        )
+                    }
+                </Stack.Screen>
 
-        </Stack.Navigator>
+            </Stack.Navigator>
+        </SafeAreaView>
     )
 
 }
