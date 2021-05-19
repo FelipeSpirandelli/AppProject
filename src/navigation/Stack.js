@@ -16,6 +16,7 @@ export default props => {
     const [isLoading, setLoading] = useState(true)
     const [products, setProducts] = useState([])
     const [cartProducts, setCartProducts] = useState([])
+    const [totalCost, setTotalCost] = useState(0)
 
     useEffect(async () => {
         let copyProducts = []
@@ -47,7 +48,8 @@ export default props => {
 
     const addRemoveProduct = (id, name, base_experience, front_shiny, isAdded) => {
         let copyCartProducts = [...cartProducts]
-
+        let auxTotalCost = 0
+    
         if (isAdded) {
             copyCartProducts = copyCartProducts.filter(copyCartProduct => {
                 return copyCartProduct.id != id
@@ -57,8 +59,11 @@ export default props => {
             isAdded = !isAdded
             copyCartProducts.push({ id, name, base_experience, front_shiny, isAdded })
         }
-
+        copyCartProducts.forEach((copyCartProduct) =>{  
+            auxTotalCost +=  copyCartProduct.base_experience
+        })
         setCartProducts(copyCartProducts)
+        setTotalCost(auxTotalCost)
     }
 
     return (
@@ -95,6 +100,7 @@ export default props => {
                                 cartProducts={cartProducts}>
                                 <CartList
                                     toggleProduct={toggleProduct}
+                                    totalCost = {totalCost}
                                     cartProducts={cartProducts}
                                     addRemoveProduct={addRemoveProduct} />
                             </ChangeStack>

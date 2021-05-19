@@ -46,7 +46,7 @@ const productStyle = StyleSheet.create({
         flexDirection: 'row',
     },
     pruductField: {
-        flex: 1
+        flexGrow: 1
     },
 })
 
