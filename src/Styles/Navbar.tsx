@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
 
 const navbarStyle = StyleSheet.create({
     navbar:{
@@ -11,4 +11,4 @@ const navbarStyle = StyleSheet.create({
     },
 })
 
-export default navbarStyle 
+export default navbarStyle;

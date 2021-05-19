@@ -1,4 +1,4 @@
-import {  StyleSheet  } from 'react-native'
+import {  StyleSheet  } from 'react-native';
 
 const imageStyle = StyleSheet.create({
     mediumImage:{
@@ -6,9 +6,9 @@ const imageStyle = StyleSheet.create({
         height: 90,
     },
     smallImage:{
-        width: '50%',
-        height: '50%',
+        width: 60,
+        height: 60,
     }, 
 })
 
-export default imageStyle
+export default imageStyle;

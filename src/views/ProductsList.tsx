@@ -1,14 +1,28 @@
 import React from 'react'
 import { SafeAreaView, Text, View, FlatList, ScrollView } from 'react-native'
 
-import Product from '../components/Product.js'
-import productStyle from '../Styles/ProductsStyle.js'
+import Product from '../components/Product'
+import productStyle from '../Styles/ProductsStyle'
 
-const ProductsList = ({addRemoveProduct, toggleProduct, products, isLoading}) => {
+export interface Props {
+    products: Array<{
+        id: number,
+        name: string, 
+        base_experience: number, 
+        front_shiny: string, 
+        isAdded: boolean
+    }>,
+    isLoading: boolean,
+    addRemoveProduct: (id:number, name:string, base_experience:number, front_shiny:string, isAdded:boolean) => void ,
+    toggleProduct: (id:number) => void
+}
+
+
+const ProductsList = ({addRemoveProduct, toggleProduct, products, isLoading}: Props) => {
 
     return (
         <SafeAreaView >
-            <View style={productStyle.productsContainer, {marginBottom: 65}}>
+            <View style={productStyle.productsContainer}>
                 {isLoading
                     ? <Text> Loading </Text>
                     : <FlatList

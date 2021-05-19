@@ -1,4 +1,4 @@
-import {  StyleSheet  } from 'react-native'
+import {  StyleSheet  } from 'react-native';
 
 const textStyle = StyleSheet.create({
     primaryText: {
@@ -8,4 +8,4 @@ const textStyle = StyleSheet.create({
     },
 })
 
-export default textStyle
+export default textStyle;

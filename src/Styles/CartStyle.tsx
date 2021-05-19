@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
 
 const cartStyle = StyleSheet.create({
     cartContainer: {
@@ -20,7 +20,12 @@ const cartStyle = StyleSheet.create({
         marginTop: 10,
         width: '90%',
         backgroundColor:'#00BFFF',
-    }
+    },
+    emptyCart:{
+        flexGrow: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 })
 
-export default cartStyle
+export default cartStyle;

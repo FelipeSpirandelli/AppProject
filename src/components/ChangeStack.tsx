@@ -1,10 +1,20 @@
-import React from 'react'
-import { View, Text, Button, TouchableOpacity } from 'react-native'
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import React, { FunctionComponent } from 'react';
+import { View, Text, Button, TouchableOpacity } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import navbarStyle from '../Styles/Navbar'
+import navbarStyle from '../Styles/Navbar';
 
-const ChangeStack = (props) => { 
+export interface Props {
+    back?: string,
+    avance: string,
+    navigation: {
+        goBack: () => void,
+        navigate: (arg0: string) => void
+    },
+    cartProducts: Array<object>,
+}
+
+const ChangeStack: FunctionComponent<Props>  = (props): JSX.Element => {
     return (
         <View >
             <View style={navbarStyle.navbar}>
@@ -13,7 +23,7 @@ const ChangeStack = (props) => {
                         ? (
                             <TouchableOpacity onPress={() => (
                                 props.navigation.goBack()
-                                
+
                             )
                             }>
                                 <Ionicons name="arrow-back-outline" size={30} />
@@ -28,15 +38,15 @@ const ChangeStack = (props) => {
                                 props.navigation.navigate(props.avance)
                             )
                             }>
-                            {
-                                !!props.cartProducts.length ?
-                                <Ionicons 
-                                    name="cart" 
-                                    size={30} />
-                                : <Ionicons 
-                                    name="cart-outline" 
-                                    size={30} />
-                            }
+                                {
+                                    !!props.cartProducts.length ?
+                                        <Ionicons
+                                            name="cart"
+                                            size={30} />
+                                        : <Ionicons
+                                            name="cart-outline"
+                                            size={30} />
+                                }
                             </TouchableOpacity>
                         )
                         : false
@@ -50,4 +60,4 @@ const ChangeStack = (props) => {
 
 }
 
-export default ChangeStack
+export default ChangeStack;
